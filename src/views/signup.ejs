@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form" action="" method="post">
+                <input type="email" name="email" placeholder="email" />
+                <input type="text" name="username" placeholder="username" />
+                <input type="password" name="password" placeholder="password" />
+                <%if(typeof err=='string' && err){%>
+                    <h3 style="color: red">
+                        <%=err %>
+                    </h3>
+                    <%}%>
+                        <button>sign up</button>
+                        <p class="message">Already registered? <a href="/users/login">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

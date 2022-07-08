@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">WebBlog</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/posts/getAllPosts">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/posts/createPost">Create your post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Your profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/posts/getYourPosts">Your posts</a>
+                    </li>
+                </ul>
+                <form class="d-flex input-group w-auto">
+                    <input type="search" class="form-control" placeholder="Search Post" aria-label="Search" />
+                    <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="mb-4">Your Posts</h1>
+        <% posts.forEach(post=> { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= post.title %>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= post.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        Category: <%= post.category %>
+                    </div>
+                    <div class="card-text mb-2">
+                        Author:
+                    </div>
+                    <div class="card-text mb-2">
+                        Tweet:
+                    </div>
+                    <div class="card-text mb-2">
+                        Comment:
+                    </div>
+                    <a href="/posts/getOnePost/<%=post.id%>" class="btn btn-primary">Read More</a>
+                    <a href="/posts/updateYourPost/<%=post.id%>" class="btn btn-info">Update</a>
+                    <form action="/posts/deleteYourPost/<%=post.id%>" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+</html>
